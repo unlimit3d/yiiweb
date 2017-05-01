@@ -57,8 +57,17 @@ $this->params['breadcrumbs'][] = $this->title;
                     $rp = CRapid::findOne($model->job_rapid);
                     return $rp->name;
                 },
-                'filter'=> ArrayHelper::map(CRapid::find()->all(),'id', 'name')
-            ],
+            'filter' => ArrayHelper::map(CRapid::find()->all(), 'id', 'name'),
+            'contentOptions' => function ($model) {
+                if ($model->job_rapid == '2') {
+                    return ['style' => "color:black;background-color:orange", 'class' => 'text-center'];
+                }else if ($model->job_rapid == '3') {
+                    return ['style' => "color:white;background-color:red", 'class' => 'text-center'];
+                }else{
+                    return ['class' => 'text-center'];
+                }
+            },
+        ],
 //            'cStatus.name',
             [
                 'attribute'=>'job_status',

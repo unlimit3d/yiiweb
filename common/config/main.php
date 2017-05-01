@@ -11,7 +11,10 @@ return [
             'class' => '\kartik\grid\Module'
         ],
         'report' => [
-            'class' => 'frontend\moduls\report\Report',
+            'class' => 'frontend\modules\report\Report',
+        ],
+        'map' => [
+            'class' => 'frontend\modules\map\Map',
         ],
     ]
 ];

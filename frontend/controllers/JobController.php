@@ -73,10 +73,10 @@ class JobController extends AppController // เปลี่ยนนจาก C
         // $model->date_end = date('Y-m-d');
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            $msg = "--รายการแจ้งซ่อมใหม่ [ผู้แจ้ง: ".$model->customer."]";
+            $this->sendLineNotify($msg);
             
-//            $this->sendLineNotify('--รายการแจ้งซ่อมใหม่ [ผู้แจ้ง: '.$model->customer.']');
-            
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(["view", 'id' => $model->id]);
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -98,7 +98,7 @@ class JobController extends AppController // เปลี่ยนนจาก C
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
 //            if($model->job_status == '2'){
-//                $this->sendLineNotify("--อัพเดตสถานะ  [ผู้แจ้ง: ".$model->customer."] \r\n สถานะ: ". CStatus::findOne($model->job_status)->name);
+                $this->sendLineNotify("--อัพเดตสถานะ  [ผู้แจ้ง: ".$model->customer."] \r\n สถานะ: ". CStatus::findOne($model->job_status)->name);
 //            }
             
             return $this->redirect(['view', 'id' => $model->id]);

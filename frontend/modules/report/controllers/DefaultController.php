@@ -1,6 +1,6 @@
 <?php
 
-namespace frontend\moduls\report\controllers;
+namespace frontend\modules\report\controllers;
 
 use yii\web\Controller;
 use yii\data\ArrayDataProvider;
